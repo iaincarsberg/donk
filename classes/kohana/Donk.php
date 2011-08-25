@@ -1,4 +1,4 @@
-Kohana::$config->load<?php defined('SYSPATH') or die('No direct access allowed.');
+<?php defined('SYSPATH') or die('No direct access allowed.');
 
 /**
  * Kohana_Donk
