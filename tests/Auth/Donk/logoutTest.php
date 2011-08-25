@@ -1,4 +1,4 @@
-<?php defined('SYSPATH') or die('No direct access allowed.');
+Kohana::$config->load<?php defined('SYSPATH') or die('No direct access allowed.');
 
 /**
  * Test the doctrine implementation of the auth module.
@@ -67,7 +67,7 @@ class Auth_Donk_LogoutTest extends DONK_PHPUnit_Framework_Testcase
 		
 		// Fudge in a cookie value, otherwise the cookie will only exist in the
 		// next request.
-		Cookie::$salt = Kohana::config('cookie.salt');
+		Cookie::$salt = Kohana::$config->load('cookie.salt');
 		$_COOKIE['authautologin'] = Cookie::salt('authautologin', $tokens[0]->token).'~'.$tokens[0]->token;
 		
 		$this->assertTrue($auth->logout());

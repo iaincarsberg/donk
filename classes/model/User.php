@@ -155,7 +155,7 @@ class Model_User extends Model_BaseUser
 		// enter the correct redentials the account will be locked way before
 		// this happens, and the correct password will recive a failed 
 		// response.
-		$max_failed_login_attempts = Kohana::config('donk_auth.max_failed_login_attempts');
+		$max_failed_login_attempts = Kohana::$config->load('donk_auth.max_failed_login_attempts');
 		if ($max_failed_login_attempts AND
 			$this->failed_login_attempts >= $max_failed_login_attempts) {
 			

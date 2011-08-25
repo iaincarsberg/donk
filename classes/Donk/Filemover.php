@@ -162,7 +162,7 @@ class Donk_Filemover
 				// Check to see if the class_name is meant to be fored into 
 				// the donk module.
 				foreach (Kohana::modules() as $name=> $module) {
-					if (in_array($class_name, (array)Kohana::config($name . '_local_models'))) {
+					if (in_array($class_name, (array)Kohana::$config->load($name . '_local_models'))) {
 						$current_target = implode(array(
 							$module,
 							$this->class_model_path(),

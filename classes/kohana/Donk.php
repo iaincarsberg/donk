@@ -1,4 +1,4 @@
-<?php defined('SYSPATH') or die('No direct access allowed.');
+Kohana::$config->load<?php defined('SYSPATH') or die('No direct access allowed.');
 
 /**
  * Kohana_Donk
@@ -88,7 +88,7 @@ class Kohana_Donk
 	public static function connect($config_name)
 	{
 		// Getting kohana configurations for doctrine
-		$db = Kohana::config('donk');
+		$db = Kohana::$config->load('donk');
 		
 		// Makesure the parsed connection name exists.
 		if (! array_key_exists($config_name, $db)) {

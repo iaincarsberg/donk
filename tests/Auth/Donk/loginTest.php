@@ -79,9 +79,9 @@ class Auth_Donk_LoginTest extends DONK_PHPUnit_Framework_Testcase
 	public function fixturedUsersToTestAccountLocking()
 	{
 		return array(
-			array('user1', 'fake_password', Kohana::config('donk_auth.max_failed_login_attempts'), 'password'),
-			array('user2', 'fake_password', Kohana::config('donk_auth.max_failed_login_attempts'), 'password'),
-			array('user3', 'fake_password', Kohana::config('donk_auth.max_failed_login_attempts'), 'password')
+			array('user1', 'fake_password', Kohana::$config->load('donk_auth.max_failed_login_attempts'), 'password'),
+			array('user2', 'fake_password', Kohana::$config->load('donk_auth.max_failed_login_attempts'), 'password'),
+			array('user3', 'fake_password', Kohana::$config->load('donk_auth.max_failed_login_attempts'), 'password')
 		);
 	}
 	
@@ -180,7 +180,7 @@ class Auth_Donk_LoginTest extends DONK_PHPUnit_Framework_Testcase
 			$this->assertSame(count($user->Tokens), 1);
 			$this->assertSame($user->Tokens[0]->user_id, $user->id);
 			$this->assertSame($user->Tokens[0]->created, (string)time());
-			$this->assertSame($user->Tokens[0]->expires, (string)(time() + Kohana::config('auth.lifetime')));
+			$this->assertSame($user->Tokens[0]->expires, (string)(time() + Kohana::$config->load('auth.lifetime')));
 		}
 	}
 }

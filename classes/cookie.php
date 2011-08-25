@@ -8,11 +8,11 @@ class Cookie extends Kohana_Cookie {
 	 */
 	public static function config()
 	{
-		self::$salt       = Kohana::config('cookie.salt');
-		self::$expiration = Kohana::config('cookie.expiration');
-		self::$path       = Kohana::config('cookie.path');
-		self::$domain     = Kohana::config('cookie.domain');
-		self::$secure     = Kohana::config('cookie.secure');
-		self::$httponly   = Kohana::config('cookie.httponly');
+		self::$salt       = Kohana::$config->load('cookie.salt');
+		self::$expiration = Kohana::$config->load('cookie.expiration');
+		self::$path       = Kohana::$config->load('cookie.path');
+		self::$domain     = Kohana::$config->load('cookie.domain');
+		self::$secure     = Kohana::$config->load('cookie.secure');
+		self::$httponly   = Kohana::$config->load('cookie.httponly');
 	}
 }

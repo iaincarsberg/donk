@@ -7,7 +7,7 @@ class Controller_Doctrine extends Controller
 		parent::before(); 
 
 		//Restrict controller to localhost
-		if ( !in_array($_SERVER['REMOTE_ADDR'], Kohana::config('donk.admin_ip_list')) )
+		if ( !in_array($_SERVER['REMOTE_ADDR'], Kohana::$config->load('donk.admin_ip_list')) )
 		{
 			echo "DENIED!";
 			exit;
@@ -293,7 +293,7 @@ class Controller_Doctrine extends Controller
 	public function list_tables()
 	{
 		echo '<pre>';
-		foreach (Kohana::config('donk') as $key=> $value) {
+		foreach (Kohana::$config->load('donk') as $key=> $value) {
 			if (in_array($key, array('admin_ip_list'))) {
 				continue;
 			}
