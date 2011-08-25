@@ -70,7 +70,7 @@ class Kohana_Donk
 	public static function autoload($use_verbose = TRUE)
 	{
 		if ($use_verbose) {
-			require Kohana::find_file('vendor', 'Doctrine-1.2.4/lib/Doctrine');
+			require Kohana::find_file('vendor', 'doctrine1/lib/Doctrine');
 			
 		} else {
 			require Kohana::find_file('vendor', 'Doctrine.compiled');
