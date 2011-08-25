@@ -1,0 +1,7 @@
+Model_Role:
+  login:
+    name: 'login'
+    description: 'Login privileges, granted after account confirmation'
+  admin:
+    name: 'admin'
+    description: 'Administrative user, has access to everything relating to management.'

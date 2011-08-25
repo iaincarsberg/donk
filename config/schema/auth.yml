@@ -1,0 +1,110 @@
+Role:
+  tableName: roles
+  columns:
+    id:
+      type: integer(4)
+      unsigned: true
+      notnull: false
+      primary: true
+      autoincrement: true
+    name: string(32)
+    description: string(255)
+  relations:
+    Roles_Users:
+      local: id
+      foreign: role_id
+      alias: Users
+      foreignAlias: Role
+      type: many
+      foreignType: one
+      cascade: [delete]
+Roles_Users:
+  tableName: roles_users
+  columns:
+    user_id:
+      type: integer(4)
+      unsigned: true
+      primary: true
+    role_id:
+      type: integer(4)
+      unsigned: true
+      primary: true
+User:
+  tableName: users
+  columns:
+    id:
+      type: integer(4)
+      unsigned: true
+      notnull: false
+      primary: true
+      autoincrement: true
+    email: string(127)
+    username:
+      type: string(32)
+      notnull: false
+    password: 
+      type: string(64)
+      notnull: false
+    logins:
+      type: integer(4)
+      unsigned: true
+      notnull: false
+      default: 0
+    last_login:
+      type: integer(4)
+      unsigned: true
+    failed_login_attempts:
+      type: integer(4)
+      unsigned: true
+      default: 0
+  indexes:
+    unqi_username:
+      fields: [username]
+      type: unique
+    unqi_email:
+      fields: [email]
+      type: unique
+  relations:
+    User_Token:
+      local: id
+      foreign: user_id
+      alias: Tokens
+      foreignAlias: User
+      type: many
+      foreignType: one
+      cascade: [delete]
+    Roles_Users:
+      local: id
+      foreign: user_id
+      alias: Roles
+      foreignAlias: User
+      type: many
+      foreignType: one
+      cascade: [delete]
+User_Token:
+  tableName: user_tokens
+  columns:
+    id:
+      type: integer(4)
+      unsigned: true
+      notnull: false
+      primary: true
+      autoincrement: true
+    user_id:
+      type: integer(4)
+      unsigned: true
+      notnull: false
+    user_agent: string(40)
+    token: string(40)
+    created:
+      type: integer(4)
+      unsigned: true
+      notnull: false
+    expires:
+      type: integer(4)
+      unsigned: true
+      notnull: false
+  indexes:
+    unqi_token:
+      fields: [token]
+      type: unique
